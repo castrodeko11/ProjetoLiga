@@ -1,2 +1,0 @@
-# ProjetoLiga
-Projeto da faculdade 
