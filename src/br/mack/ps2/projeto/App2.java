@@ -14,54 +14,39 @@ import java.util.List;
 import jogadoresliga.LeitorDadosJogadores;
 
 public class App2 {
+
+ 
     public static void main(String[] args) {
         LeitorDadosJogadores leitor = new LeitorDadosJogadores();
         String[] dados = leitor.ler();
-        List<String> ligas = new ArrayList<>();
-        List<String> confederacoes = new ArrayList<>();
-       
         
-         //Teste       
-         
-       for(String dado: dados) {
-            String[] info = dado.split(";");
-            String nomeConfederacao = info[0];
-            Confederacao confederacao = new Confederacao(nomeConfederacao);
-            if (!confederacoes.contains(confederacao)) {
-                 confederacoes.add(confederacao);
-            }
-            int indexConfederacao = confederacoes.indexOf(confederacao);
-            
-            String nomeLiga = new Liga(nomeLiga);
-            Liga liga = new Liga(nomeLiga);
-            if (!conferacoes.get(indexConferacao).getLigas().contains(liga)){
-                confederacoes.get(indexConferacao).getLigas().add(liga)
-            
-            }
-        }
-       
-       for (Confederacao conderacoes : confederacoes){
-           System.out.println("Confederações: "+confed.getNome());
-           for (Liga liga : confed.getLigas()){
-               System.out.println("\t Liga: "+liga.getNome());
-           
+        List<Confederacao>confederacoes = new ArrayList<>();
+        
+        for (String dado : dados) {
+           String[] info = dado.split(";");
+           String nomeConfederacao = info[0];
+           Confederacao confederacao = new Confederacao(nomeConfederacao); // percorre o array e se nao tiver o item ele é add
+           if(!confederacoes.contains(confederacao)){
+               confederacoes.add(confederacao);
            }
-       
-       }
-       
-        // Fim Teste 
+           
+        int indexConfederacao = confederacoes.indexOf(confederacao); // posição do array de 0 ate o fim
         
-        for(String dado: dados) {
-            String[] info = dado.split(";");
-            String liga = info[1];
-            if (!ligas.contains(liga)) {
-                ligas.add(liga);
-            }
-        }
+        String nomeLiga = info[1];
+        Liga liga = new Liga(nomeLiga);
+        if(!confederacoes.get(indexConfederacao).getLigas().contains(liga)){ // pega a liga e ve se ela esta na lista
+            confederacoes.get(indexConfederacao).getLigas().add(liga); // // se nao tiver ela adciona na lista
+           }
 
-        for (String liga: ligas) {        
-            System.out.println("Nome da liga: " + liga);
         }
-        System.out.println("Quantidade de ligas: " + ligas.size());
+        
+        
+    for (Confederacao confed : confederacoes){
+        System.out.println("\t Liga: "+confed.getNome());
+        for (Liga liga : confed.getLigas()){
+            System.out.println("\t Liga: "+liga.getNome());
+        }
     }
+    }
+    
 }
