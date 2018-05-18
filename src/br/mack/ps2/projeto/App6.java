@@ -29,5 +29,7 @@ public class App6 {
             System.out.println("Nome da liga: " + liga);
         }
         System.out.println("Quantidade de ligas: " + ligas.size());
+
+
     }
 }
