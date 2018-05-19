@@ -5,6 +5,8 @@
  */
 package br.mack.ps2.projeto;
 
+
+
 import java.util.Objects;
 
 /**
@@ -13,15 +15,15 @@ import java.util.Objects;
  */
 public class Jogador {
     private String nome;
-    private String dataNasscimento;
+    private String dataNascimento;
     private String localNascimento;
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.nome);
-        hash = 53 * hash + Objects.hashCode(this.dataNasscimento);
-        hash = 53 * hash + Objects.hashCode(this.localNascimento);
+        int hash = 3;
+        hash = 47 * hash + Objects.hashCode(this.nome);
+        hash = 47 * hash + Objects.hashCode(this.dataNascimento);
+        hash = 47 * hash + Objects.hashCode(this.localNascimento);
         return hash;
     }
 
@@ -40,7 +42,7 @@ public class Jogador {
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
-        if (!Objects.equals(this.dataNasscimento, other.dataNasscimento)) {
+        if (!Objects.equals(this.dataNascimento, other.dataNascimento)) {
             return false;
         }
         if (!Objects.equals(this.localNascimento, other.localNascimento)) {
@@ -49,15 +51,11 @@ public class Jogador {
         return true;
     }
 
-    public void setNome(String nome) {
+   
+
+    public Jogador(String nome, String dataNascimento, String localNascimento) {
         this.nome = nome;
-    }
-
-    public void setDataNasscimento(String dataNasscimento) {
-        this.dataNasscimento = dataNasscimento;
-    }
-
-    public void setLocalNascimento(String localNascimento) {
+        this.dataNascimento = dataNascimento;
         this.localNascimento = localNascimento;
     }
 
@@ -65,17 +63,24 @@ public class Jogador {
         return nome;
     }
 
-    public String getDataNasscimento() {
-        return dataNasscimento;
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public String getLocalNascimento() {
         return localNascimento;
     }
 
-    public Jogador(String nome, String dataNasscimento, String localNascimento) {
-        this.nome = nome;
-        this.dataNasscimento = dataNasscimento;
+    public void setLocalNascimento(String localNascimento) {
         this.localNascimento = localNascimento;
     }
+
 }
