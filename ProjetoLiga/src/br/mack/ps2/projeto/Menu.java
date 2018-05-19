@@ -29,6 +29,10 @@ public class Menu {
     private static int indexTimeAtual;
     //------------------------------------------------
     
+    // Inserção dos jogadores
+    private List<Jogador> jogadores;
+    private static int indexJogadorAtual;
+    //------------------------------------------------
     private static int menuAtual;
     /*menu 
         principal 0 -
@@ -39,7 +43,7 @@ public class Menu {
        
     
     */
-
+    // Confederações 
     public List<Confederacao> getConfederacoes() {
         return confederacoes;
     }
@@ -47,6 +51,7 @@ public class Menu {
     public void setConfederacoes(List<Confederacao> confederacoes) {
         this.confederacoes = confederacoes;
     }
+    //------------------------------------------------
 
     // Ligas 
     public List<Liga> getLigas() {
@@ -68,10 +73,20 @@ public class Menu {
     }
     //------------------------------------------------
     
+    // Jogadores
+    public List<Jogador> getJogadores() {
+        return jogadores;
+    }
+
+    public void setJogadores(List<Jogador> jogadores) {
+        this.jogadores = jogadores;
+    }
+    //------------------------------------------------
     public Menu() {
         this.confederacoes = new ArrayList<>();
         this.ligas= new ArrayList<>();
         this.times= new ArrayList<>();
+        this.jogadores = new ArrayList<>();
         this.carregar();
     }
     
@@ -91,7 +106,7 @@ public class Menu {
             confederacao = this.confederacoes.get(indexOfConfederacao);
             
             
-            // Ligas inserção das mesmas
+            // Ligas inserção 
             Liga liga = new Liga(info[1]);
             if(!ligas.contains(liga))
             {
@@ -100,7 +115,7 @@ public class Menu {
             int indexOfLiga= this.ligas.indexOf(liga);
             liga = this.ligas.get(indexOfLiga);
             
-           // Ligas inserção dos times
+            // Times inserção 
             Time time = new Time(info[2]);
             if(!times.contains(time))
             {
@@ -108,6 +123,15 @@ public class Menu {
             }
             int indexOfTime= this.times.indexOf(time);
             time = this.times.get(indexOfTime);
+            
+            // Jogadores inserção
+            Jogador jogador = new Jogador(info[3],info[4],info[5]);
+            if(!jogadores.contains(jogador))
+            {
+               jogadores.add(jogador);
+            }
+            int indexOfJogador= this.jogadores.indexOf(jogador);
+            jogador = this.jogadores.get(indexOfJogador);
         }
 
     }
@@ -219,6 +243,35 @@ public class Menu {
         
     }
     
+    //------------------------------------------------- 
+    
+    // Menu Jogadores para retonar as informações
+    public static int menuJogador(List<Jogador> jogadores){
+        System.out.println("Menu Jogadores - escolha uma");
+        for (int i = 0; i < jogadores.size(); i++) {
+            System.out.println("("+(i)+") - "+jogadores.get(i).getNome());    
+        }
+        System.out.println("(S) Sair");
+        System.out.println("Digite a opcao desejada: ");
+        
+        Scanner scan = new Scanner(System.in);
+        String opc = scan.nextLine();
+        if(opc.equalsIgnoreCase("S")){
+            menuAtual=0; //setando o menu anterior
+            return menuAtual;
+        }
+        
+        if(Integer.parseInt(opc)<jogadores.size()){
+            indexJogadorAtual = Integer.parseInt(opc);
+            menuAtual = 2;//´proximo menu
+        }else{
+            menuAtual = 1 ; //vai permanecer neste menu
+        }
+
+        return menuAtual;
+        
+    }
+    
    //------------------------------------------------- 
     
     
@@ -230,6 +283,7 @@ public class Menu {
             menuConfederecao(m.getConfederacoes());
             menuLiga(m.getLigas());
             menuTime(m.getTimes());
+            menuJogador(m.getJogadores());
         }
         
         while(menuAtual == 1);
