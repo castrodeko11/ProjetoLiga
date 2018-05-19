@@ -13,15 +13,22 @@ import jogadoresliga.LeitorDadosJogadores;
 
 /**
  *
- * @author 1146355
+ * @author 31755135
  */
 public class Menu {
     private List<Confederacao> confederacoes;
     private static int indexConfederacaoAtual;
+    
+    // Inserção das ligas
+    private List<Liga> ligas;
+    private static int indexLigaAtual;
+    //------------------------------------------------
+    
+    
     private static int menuAtual;
     /*menu 
-        principal 0
-        confederacoes 1
+        principal 0 -
+        confederacoes 1-
         ligas 2
         times 3
         jogadores 4
@@ -37,30 +44,52 @@ public class Menu {
         this.confederacoes = confederacoes;
     }
 
+    // Ligas 
+    public List<Liga> getLigas() {
+        return ligas;
+    }
+
+    public void setLigas(List<Liga> ligas) {
+        this.ligas = ligas;
+    }
+    //------------------------------------------------
+    
     public Menu() {
         this.confederacoes = new ArrayList<>();
+        this.ligas= new ArrayList<>();
         this.carregar();
     }
     
     public void carregar(){
         LeitorDadosJogadores leitor = new LeitorDadosJogadores();
         String[] dados = leitor.ler();
-        for(String dado: dados) {
+        for(String dado: dados) 
+        {
             String[] info = dado.split(";");
             Confederacao confederacao = new Confederacao(info[0]);
-            if (!confederacoes.contains(confederacao)) {
+            if (!confederacoes.contains(confederacao)) 
+            {
                 confederacoes.add(confederacao);
             }
             
             int indexOfConfederacao = this.confederacoes.indexOf(confederacao);
             confederacao = this.confederacoes.get(indexOfConfederacao);
+            
+            
+            // Ligas inserção das mesmas
+            
             Liga liga = new Liga(info[1]);
-            if(!confederacao.getLigas().contains(liga)){
-                confederacao.getLigas().add(liga);
+            if(!ligas.contains(liga))
+            {
+               ligas.add(liga);
             }
+            int indexOfLiga= this.ligas.indexOf(liga);
+            liga = this.ligas.get(indexOfLiga);
         }
 
     }
+
+    
     
     public static int manuPrincipal(){
         System.out.println("Menu Principal");
@@ -79,6 +108,8 @@ public class Menu {
         
         return menuAtual;
     }
+    
+    
     
     public static int menuConfederecao(List<Confederacao> confederacoes){
         System.out.println("Menu Confederacoes - escolha uma");
@@ -106,14 +137,49 @@ public class Menu {
         
     }
     
+    
+   // Menu ligas  para retonar as informações
+    public static int menuLiga(List<Liga> ligas){
+        System.out.println("Menu Ligas- escolha uma");
+        for (int i = 0; i < ligas.size(); i++) {
+            System.out.println("("+(i)+") - "+ligas.get(i).getNome());    
+        }
+        System.out.println("(S) Sair");
+        System.out.println("Digite a opcao desejada: ");
+        
+        Scanner scan = new Scanner(System.in);
+        String opc = scan.nextLine();
+        if(opc.equalsIgnoreCase("S")){
+            menuAtual=0; //setando o menu anterior
+            return menuAtual;
+        }
+        
+        if(Integer.parseInt(opc)<ligas.size()){
+            indexLigaAtual = Integer.parseInt(opc);
+            menuAtual = 2;//´proximo menu
+        }else{
+            menuAtual = 1 ; //vai permanecer neste menu
+        }
+
+        return menuAtual;
+        
+    }
+    
+   //------------------------------------------------- 
+    
+    
     public static void main(String[] args) {
         Menu m = new Menu();
         manuPrincipal();
         
         do{
             menuConfederecao(m.getConfederacoes());
-        }while(menuAtual == 1);
+            menuLiga(m.getLigas());
+        }
         
+        while(menuAtual == 1);
+       
+
     }
     
 }
