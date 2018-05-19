@@ -24,6 +24,10 @@ public class Menu {
     private static int indexLigaAtual;
     //------------------------------------------------
     
+    // Inserção dos times
+    private List<Time> times;
+    private static int indexTimeAtual;
+    //------------------------------------------------
     
     private static int menuAtual;
     /*menu 
@@ -54,9 +58,20 @@ public class Menu {
     }
     //------------------------------------------------
     
+        // Times
+    public List<Time> getTimes() {
+        return times;
+    }
+
+    public void setTimes(List<Time> ligas) {
+        this.times = times;
+    }
+    //------------------------------------------------
+    
     public Menu() {
         this.confederacoes = new ArrayList<>();
         this.ligas= new ArrayList<>();
+        this.times= new ArrayList<>();
         this.carregar();
     }
     
@@ -77,7 +92,6 @@ public class Menu {
             
             
             // Ligas inserção das mesmas
-            
             Liga liga = new Liga(info[1]);
             if(!ligas.contains(liga))
             {
@@ -85,6 +99,15 @@ public class Menu {
             }
             int indexOfLiga= this.ligas.indexOf(liga);
             liga = this.ligas.get(indexOfLiga);
+            
+           // Ligas inserção dos times
+            Time time = new Time(info[2]);
+            if(!times.contains(time))
+            {
+               times.add(time);
+            }
+            int indexOfTime= this.times.indexOf(time);
+            time = this.times.get(indexOfTime);
         }
 
     }
@@ -168,6 +191,37 @@ public class Menu {
    //------------------------------------------------- 
     
     
+    
+    // Menu times para retonar as informações
+    public static int menuTime(List<Time> times){
+        System.out.println("Menu Times - escolha uma");
+        for (int i = 0; i < times.size(); i++) {
+            System.out.println("("+(i)+") - "+times.get(i).getNome());    
+        }
+        System.out.println("(S) Sair");
+        System.out.println("Digite a opcao desejada: ");
+        
+        Scanner scan = new Scanner(System.in);
+        String opc = scan.nextLine();
+        if(opc.equalsIgnoreCase("S")){
+            menuAtual=0; //setando o menu anterior
+            return menuAtual;
+        }
+        
+        if(Integer.parseInt(opc)<times.size()){
+            indexTimeAtual = Integer.parseInt(opc);
+            menuAtual = 2;//´proximo menu
+        }else{
+            menuAtual = 1 ; //vai permanecer neste menu
+        }
+
+        return menuAtual;
+        
+    }
+    
+   //------------------------------------------------- 
+    
+    
     public static void main(String[] args) {
         Menu m = new Menu();
         manuPrincipal();
@@ -175,6 +229,7 @@ public class Menu {
         do{
             menuConfederecao(m.getConfederacoes());
             menuLiga(m.getLigas());
+            menuTime(m.getTimes());
         }
         
         while(menuAtual == 1);
