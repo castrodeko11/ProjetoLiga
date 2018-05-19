@@ -16,23 +16,32 @@ import java.util.Objects;
 public class Liga {
     private String nome;
     private List<Time> times;
-    public  List<Jogo> jogos;
-    
-    public Liga(String nome){
-        this.nome=nome;
-        this.times=new ArrayList<>();
-        this.jogos=new ArrayList<>();
+
+    public Liga(String nome) {
+        this.nome = nome;
+        this.times = new ArrayList<>();
     }
-    
-    public void addTime(Time time){
-        this.times.add(time);
-        this.jogos = jogos;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public List<Time> getTimes() {
+        return times;
+    }
+
+    public void setTimes(List<Time> times) {
+        this.times = times;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + Objects.hashCode(this.nome);
+        int hash = 7;
+        hash = 83 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 
@@ -53,35 +62,5 @@ public class Liga {
         }
         return true;
     }
-    
-    public  Jogo organizarJogos()
-    {
-     int nTimes = times.size();
-     int nJogos = jogos.size();
-     for (int i=0;i<nTimes-1;i++){
-         for(int j=i+1;j<nTimes;j++){
-             nJogos++;
-         }
-         
-     }
-     jogos = new List<Jogo>();
-     
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setTimes(List<Time> times) {
-        this.times = times;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public List<Time> getTimes() {
-        return times;
-    }   
     
 }
