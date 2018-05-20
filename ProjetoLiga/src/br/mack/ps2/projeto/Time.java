@@ -5,6 +5,7 @@
  */
 package br.mack.ps2.projeto;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -15,14 +16,8 @@ import java.util.Objects;
  */
 public class Time {
     private String nome;
-    private List<Jogador>jogadores;
-    
-    
-    public void addJogador(Jogador jogador){
-        this.jogadores.add(jogador);
-    
-    }
-    
+    private List<Jogador> jogadores;
+
     public Time(String nome) {
         this.nome = nome;
         this.jogadores = new ArrayList<>();
@@ -30,8 +25,8 @@ public class Time {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.nome);
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 
@@ -53,21 +48,19 @@ public class Time {
         return true;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setJogadores(List<Jogador> jogadores) {
-        this.jogadores = jogadores;
-    }
-
     public String getNome() {
         return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public List<Jogador> getJogadores() {
         return jogadores;
     }
 
-
+    public void setJogadores(List<Jogador> jogadores) {
+        this.jogadores = jogadores;
+    }
 }

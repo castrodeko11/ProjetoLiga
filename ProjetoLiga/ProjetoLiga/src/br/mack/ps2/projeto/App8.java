@@ -9,27 +9,23 @@ package br.mack.ps2.projeto;
  *
  * @author 31755135
  */
-import java.util.ArrayList;
-import java.util.List;
 import jogadoresliga.LeitorDadosJogadores;
 
-public class App6 {
+public class App8 {
+
     public static void main(String[] args) {
         LeitorDadosJogadores leitor = new LeitorDadosJogadores();
         String[] dados = leitor.ler();
-        List<String> ligas = new ArrayList<>();
         for(String dado: dados) {
             String[] info = dado.split(";");
-            String liga = info[1];
-            if (!ligas.contains(liga)) {
-                ligas.add(liga);
-            }
+            String nome = info[3];
+            String dataNascimento = info[4];
+            String localNascimento = info[5];
+            System.out.println(nome + " nasceu no dia " 
+                    + dataNascimento + " em " 
+                    + localNascimento);
         }
-        for (String liga: ligas) {        
-            System.out.println("Nome da liga: " + liga);
-        }
-        System.out.println("Quantidade de ligas: " + ligas.size());
-
-
+        System.out.println("Quantidade de registros: " + dados.length);
     }
 }
+

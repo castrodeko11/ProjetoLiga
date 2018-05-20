@@ -17,31 +17,14 @@ public class Liga {
     private String nome;
     private List<Time> times;
 
-    public Liga(String nome) {
-        this.nome = nome;
-        this.times = new ArrayList<>();
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public List<Time> getTimes() {
-        return times;
-    }
-
-    public void setTimes(List<Time> times) {
-        this.times = times;
+    public void addTime(Time time){
+        this.times.add(time);
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 83 * hash + Objects.hashCode(this.nome);
+        int hash = 3;
+        hash = 53 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 
@@ -62,5 +45,25 @@ public class Liga {
         }
         return true;
     }
-    
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setTimes(List<Time> times) {
+        this.times = times;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public List<Time> getTimes() {
+        return times;
+    }
+
+    public Liga(String nome) {
+        this.nome = nome;
+        this.times = new ArrayList<>();
+    }
 }

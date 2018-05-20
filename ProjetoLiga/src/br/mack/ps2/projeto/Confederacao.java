@@ -16,15 +16,16 @@ import java.util.Objects;
 public class Confederacao {
     private String nome;
     private List<Liga> ligas;
-    
-    public void addLiga(Liga liga){
-        this.ligas.add(liga);
+
+    public Confederacao(String nome) {
+        this.nome = nome;
+        this.ligas = new ArrayList<>();
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.nome);
+        int hash = 5;
+        hash = 53 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 
@@ -46,26 +47,19 @@ public class Confederacao {
         return true;
     }
 
-   
+    public String getNome() {
+        return nome;
+    }
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public void setLigas(List<Liga> ligas) {
-        this.ligas = ligas;
-    }
-
-    public String getNome() {
-        return nome;
     }
 
     public List<Liga> getLigas() {
         return ligas;
     }
 
-    public Confederacao(String nome) {
-        this.nome = nome;
-        this.ligas = new ArrayList<>();
+    public void setLigas(List<Liga> ligas) {
+        this.ligas = ligas;
     }
 }

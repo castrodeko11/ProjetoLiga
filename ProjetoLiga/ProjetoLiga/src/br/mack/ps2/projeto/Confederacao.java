@@ -13,35 +13,18 @@ import java.util.Objects;
  *
  * @author 31755135
  */
-public class Liga {
+public class Confederacao {
     private String nome;
-    private List<Time> times;
-
-    public Liga(String nome) {
-        this.nome = nome;
-        this.times = new ArrayList<>();
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public List<Time> getTimes() {
-        return times;
-    }
-
-    public void setTimes(List<Time> times) {
-        this.times = times;
+    private List<Liga> ligas;
+    
+    public void addLiga(Liga liga){
+        this.ligas.add(liga);
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 83 * hash + Objects.hashCode(this.nome);
+        hash = 97 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 
@@ -56,11 +39,33 @@ public class Liga {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Liga other = (Liga) obj;
+        final Confederacao other = (Confederacao) obj;
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
         return true;
     }
-    
+
+   
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setLigas(List<Liga> ligas) {
+        this.ligas = ligas;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public List<Liga> getLigas() {
+        return ligas;
+    }
+
+    public Confederacao(String nome) {
+        this.nome = nome;
+        this.ligas = new ArrayList<>();
+    }
 }

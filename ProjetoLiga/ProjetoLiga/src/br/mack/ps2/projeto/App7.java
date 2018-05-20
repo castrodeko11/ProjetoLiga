@@ -13,23 +13,22 @@ import java.util.ArrayList;
 import java.util.List;
 import jogadoresliga.LeitorDadosJogadores;
 
-public class App6 {
+public class App7 {
     public static void main(String[] args) {
         LeitorDadosJogadores leitor = new LeitorDadosJogadores();
         String[] dados = leitor.ler();
-        List<String> ligas = new ArrayList<>();
+        List<String> confederacoes = new ArrayList<>();
         for(String dado: dados) {
             String[] info = dado.split(";");
-            String liga = info[1];
-            if (!ligas.contains(liga)) {
-                ligas.add(liga);
+            String confederacao = info[0];
+            if (!confederacoes.contains(confederacao)) {
+                confederacoes.add(confederacao);
             }
         }
-        for (String liga: ligas) {        
-            System.out.println("Nome da liga: " + liga);
+        for (String confederacao: confederacoes) {        
+            System.out.println("Nome da confederação: " + confederacao);
         }
-        System.out.println("Quantidade de ligas: " + ligas.size());
-
-
+        System.out.println("Quantidade de confederações: " + confederacoes.size());
     }
 }
+
