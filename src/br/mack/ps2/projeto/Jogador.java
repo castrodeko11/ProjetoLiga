@@ -7,23 +7,58 @@ package br.mack.ps2.projeto;
 
 
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author 31755135
  */
-public class Jogador {
+public class Jogador implements Serializable, Comparable<Jogador> {
     private String nome;
-    private String dataNascimento;
-    private String localNascimento;
+    private String dataNasc;
+    private String localNasc;
+        
+    public Jogador(){
+        
+    }
+    
+    public Jogador(String nome, String dataNasc, String localNasc){
+        this.nome = nome;
+        this.dataNasc = dataNasc;
+        this.localNasc = localNasc;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getDataNasc() {
+        return dataNasc;
+    }
+
+    public void setDataNasc(String dataNasc) {
+        this.dataNasc = dataNasc;
+    }
+
+    public String getLocalNasc() {
+        return localNasc;
+    }
+
+    public void setLocalNasc(String localNasc) {
+        this.localNasc = localNasc;
+    }
+    
+    
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 47 * hash + Objects.hashCode(this.nome);
-        hash = 47 * hash + Objects.hashCode(this.dataNascimento);
-        hash = 47 * hash + Objects.hashCode(this.localNascimento);
+        int hash = 5;
+        hash = 89 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 
@@ -42,45 +77,12 @@ public class Jogador {
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
-        if (!Objects.equals(this.dataNascimento, other.dataNascimento)) {
-            return false;
-        }
-        if (!Objects.equals(this.localNascimento, other.localNascimento)) {
-            return false;
-        }
         return true;
     }
 
-   
-
-    public Jogador(String nome, String dataNascimento, String localNascimento) {
-        this.nome = nome;
-        this.dataNascimento = dataNascimento;
-        this.localNascimento = localNascimento;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    public String getLocalNascimento() {
-        return localNascimento;
-    }
-
-    public void setLocalNascimento(String localNascimento) {
-        this.localNascimento = localNascimento;
-    }
-
+    @Override
+    public int compareTo(Jogador jogador) {
+      return this.nome.compareTo(jogador.getNome());
+    } 
+    
 }

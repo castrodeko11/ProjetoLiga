@@ -6,27 +6,52 @@
 package br.mack.ps2.projeto;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 /**
  *
  * @author 31755135
  */
-public class Time {
-    private String nome;
-    private List<Jogador> jogadores;
+import java.io.Serializable;
+import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Time(String nome) {
+public class Time implements Serializable, Comparable<Time>{
+    private String nome;
+    
+    private List<Jogador> jogadores = new ArrayList();
+    public Time(){
+        
+    }
+    
+    public Time(String nome){
         this.nome = nome;
-        this.jogadores = new ArrayList<>();
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
+    public List<Jogador> getJogadores() {
+        return jogadores;
+    }
+
+    public void setJogadores(List<Jogador> jogadores) {
+        this.jogadores = jogadores;
+    }
+    
+    public void addJogador(Jogador jogador){
+        this.jogadores.add(jogador);
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 59 * hash + Objects.hashCode(this.nome);
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 
@@ -48,19 +73,10 @@ public class Time {
         return true;
     }
 
-    public String getNome() {
-        return nome;
+    @Override
+    public int compareTo(Time time) {
+        return this.nome.compareTo(time.getNome());
     }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public List<Jogador> getJogadores() {
-        return jogadores;
-    }
-
-    public void setJogadores(List<Jogador> jogadores) {
-        this.jogadores = jogadores;
-    }
+   
+    
 }
