@@ -5,6 +5,7 @@
  */
 package br.mack.ps2.projeto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,19 +14,51 @@ import java.util.Objects;
  *
  * @author 31755135
  */
-public class Confederacao {
+public class Confederacao implements Serializable, Comparable<Confederacao> {
     private String nome;
-    private List<Liga> ligas;
-
-    public Confederacao(String nome) {
+    public List<Liga> ligas = new ArrayList();
+        
+    public Confederacao(){
+    
+    }
+  
+    public Confederacao(String nome){
         this.nome = nome;
-        this.ligas = new ArrayList<>();
     }
 
+ 
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public List<Liga> getLigas() {
+        return ligas;
+    }
+
+    public Liga getLiga(Liga liga){
+        int indexLiga = ligas.indexOf(liga);
+        Liga essaLiga = ligas.get(indexLiga);
+        return essaLiga;
+    }            
+            
+    public void setLigas(List<Liga> ligas) {
+        this.ligas = ligas;
+    }
+    
+    public void addLiga(Liga liga){
+        this.ligas.add(liga);
+    }
+    
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 53 * hash + Objects.hashCode(this.nome);
+        hash = 67 * hash + Objects.hashCode(this.nome);
+        hash = 67 * hash + Objects.hashCode(this.ligas);
         return hash;
     }
 
@@ -40,6 +73,7 @@ public class Confederacao {
         if (getClass() != obj.getClass()) {
             return false;
         }
+        
         final Confederacao other = (Confederacao) obj;
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
@@ -47,19 +81,8 @@ public class Confederacao {
         return true;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public List<Liga> getLigas() {
-        return ligas;
-    }
-
-    public void setLigas(List<Liga> ligas) {
-        this.ligas = ligas;
+    @Override
+    public int compareTo(Confederacao confederacao) {
+        return this.nome.compareTo(confederacao.getNome());
     }
 }

@@ -21,7 +21,7 @@ public class App2 {
         String[] dados = leitor.ler();
         
         List<Confederacao>confederacoes = new ArrayList<>();
-        
+
         for (String dado : dados) {
            String[] info = dado.split(";");
            String nomeConfederacao = info[0];
@@ -29,9 +29,9 @@ public class App2 {
            if(!confederacoes.contains(confederacao)){
                confederacoes.add(confederacao);
            }
-           
+
         int indexConfederacao = confederacoes.indexOf(confederacao); // posição do array de 0 ate o fim
-        
+
         String nomeLiga = info[1];
         Liga liga = new Liga(nomeLiga);
         if(!confederacoes.get(indexConfederacao).getLigas().contains(liga)){ // pega a liga e ve se ela esta na lista
