@@ -8,10 +8,7 @@ package br.mack.ps2.projeto;
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- *
- * @author SempreIT
- */
+
 public class Jogos implements Serializable{
     private Time t1;
     private Time t2;

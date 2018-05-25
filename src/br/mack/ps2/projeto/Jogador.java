@@ -10,10 +10,7 @@ package br.mack.ps2.projeto;
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- *
- * @author 31755135
- */
+
 public class Jogador implements Serializable, Comparable<Jogador> {
     private String nome;
     private String dataNasc;

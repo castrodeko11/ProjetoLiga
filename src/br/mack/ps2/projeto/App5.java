@@ -5,10 +5,7 @@
  */
 package br.mack.ps2.projeto;
 
-/**
- *
- * @author 31755135
- */
+
 import java.util.ArrayList;
 import java.util.List;
 import jogadoresliga.LeitorDadosJogadores;
