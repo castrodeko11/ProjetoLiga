@@ -5,10 +5,7 @@
  */
 package br.mack.ps2.projeto;
 
-/**
- *
- * @author 31755135
- */
+
 import jogadoresliga.LeitorDadosJogadores;
 
 public class App8 {

@@ -10,10 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/**
- *
- * @author 31755135
- */
+
 public class Confederacao implements Serializable, Comparable<Confederacao> {
     private String nome;
     public List<Liga> ligas = new ArrayList();

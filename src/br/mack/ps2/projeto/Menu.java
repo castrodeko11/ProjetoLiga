@@ -11,10 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 import jogadoresliga.LeitorDadosJogadores;
 
-/**
- *
- * @author 31755135
- */
+
 public class Menu {
      public static void main(String[] args) {
 

@@ -6,11 +6,6 @@
 package br.mack.ps2.projeto;
 
 
-
-/**
- *
- * @author 31755135
- */
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.ArrayList;
